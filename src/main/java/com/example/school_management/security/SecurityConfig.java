@@ -22,7 +22,9 @@ public class SecurityConfig
                 .csrf(csrf -> csrf.disable())
 
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/fees/**").permitAll()
                         .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/error").permitAll()
                         .requestMatchers("/teachers/**").permitAll()
                         .requestMatchers("/teacher/**").hasAuthority("TEACHER")
                         .requestMatchers("/finance/**").hasAuthority("FINANCE")
