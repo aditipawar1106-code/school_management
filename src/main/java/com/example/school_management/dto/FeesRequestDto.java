@@ -11,19 +11,28 @@ import java.util.List;
 @Data
 public class FeesRequestDto
 {
-    @NotBlank(message = "Standard (class) is required")
-    private String std;
+    @NotNull(message = "Standard (class) is required")
+    @Min(value = 1, message = "Standard must be at least 1")
+    @Max(value = 12, message = "Standard must be at most 12")
+    private Integer std;
+
     @NotEmpty(message = "At least one fee item is required")
     @Valid
     private List<FeeItemDTO> feeItems;
+
     @NotNull(message = "Payment cycle is required")
     private PaymentCycle paymentCycle;
-    @NotBlank(message = "Academic year is required")
-    @Pattern(regexp = "^\\d{4}-\\d{4}$", message = "Academic year must be in format YYYY-YYYY e.g. 2024-2025")
-    private String academicYear;
+
+    @NotNull(message = "Academic year is required")
+    @Min(value = 2000, message = "Academic year must be 2000 or later")
+    @Max(value = 2100, message = "Academic year must be 2100 or earlier")
+    private Integer academicYear;
+
     private FineType fineType;
+
     @DecimalMin(value = "0.0", message = "Fine amount cannot be negative")
     private BigDecimal fineAmount;
+
     @Data
     public static class FeeItemDTO {
 

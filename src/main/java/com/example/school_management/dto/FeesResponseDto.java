@@ -13,10 +13,10 @@ import java.util.List;
 public class FeesResponseDto
 {
     private Long id;
-    private String std;
+    private Integer std;
     private List<FeeItemDTO> feeItems;
     private PaymentCycle paymentCycle;
-    private String academicYear;
+    private Integer academicYear;
     private BigDecimal totalAmount;
     private FineType fineType;
     private BigDecimal fineAmount;

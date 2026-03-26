@@ -1,7 +1,7 @@
 package com.example.school_management.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Entity
@@ -16,14 +16,14 @@ public class Subject {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotNull
     @Column(name = "subject_name", nullable = false)
     private String subjectName;
 
     @Column(name = "subject_code", unique = true)
     private String subjectCode;
 
-    @NotBlank
+    @NotNull
     @Column(name = "standard", nullable = false)
-    private String standard;
+    private Integer standard;
 }
